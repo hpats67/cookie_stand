@@ -1,6 +1,6 @@
 'use strict';
 
-var time = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm',
+var time = ['', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm',
             '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm'];
 
 function Store(name, min, max, age) {
@@ -42,9 +42,6 @@ Store.prototype.render = function() {
   };
 //adding the total to the end of the list
   li.textContent = 'Total: ' + this.totalCookies + 'Cookies';
-
-  var main = document.getElementById('store_info');
-  main.appendChild(ul);
 };
 
 var pike    = new Store('1st and Pike', 23, 65, 6.3);
@@ -53,6 +50,20 @@ var seattle = new Store('Seattle Center', 11, 38, 3.7);
 var capital = new Store('Capital Hill', 20, 38, 2.3);
 var alki    = new Store('Alki', 2, 16, 4.6);
 
+var salesTbl = document.createElement('table');
+
+
+for(var hours = 0; hours < time.length; hours++){
+  var th = document.createElement('th');
+  th.textContent = time[hours];
+  salesTbl.appendChild(th);
+}
+
+
+
+var main = document.getElementById('store_info');
+main.appendChild(salesTbl);
+main.appendChild(ul);
 
 pike.render();
 seatac.render();
